@@ -1,0 +1,130 @@
+Live Low Quality Rules v1
+
+Task
+Review 5 live slices and detect exactly 19 live-room low-quality categories. Check every category independently. Do not omit, merge, rename, skip, or reorder any category. Use original foreign-language ASR/OCR semantics. Final human-readable evidence should be Chinese; direct source quotes may remain in the original language.
+
+Materials
+Common materials for all categories: Slice images, ASR, OCR.
+Product images may be used only for categories 3, 5, 6, 9, 10, 12, 15, 16, 17, 19. Product images are forbidden for the other 9 categories.
+
+Global evidence rules
+Every hit requires concrete evidence from allowed materials.
+Evidence must identify material type and slice number.
+Do not infer beyond listed definitions, thresholds, and exemptions.
+If evidence is weak or threshold is not met, output no_hit for that category.
+
+Exclusive priority rules
+Category 3 has absolute priority over category 6. If there is no clear sustained product promotion, explanation, or demonstration intent and live content is unrelated to bound products, classify as category 3 and do not classify as category 6.
+Category 1 has priority over category 19. Sexual exposure or sexualized implication belongs to category 1, not category 19.
+
+Category 1: 色情低俗低质问题 / sexual_vulgar
+Allowed materials: slice_image, ASR. Product image forbidden.
+Hit when any one of 5 slice images or 5 ASR snippets shows one of the listed sexual-vulgar scenarios: underwear with visible private-part protrusion, close-up thigh-root exposure, padded/fake body-shape exaggeration, more than 50% buttocks exposure in tight underwear, sexualized thigh exposure, underwear/bikini with hip-swinging, explicit sexual teasing such as chest/butt shaking or deliberate cleavage exposure by bending, clothing/product exposing large skin area judged unsuitable for public display, or product/clothing likely to expose sexual-organ outline. ASR hit only when sexual terms are frequently used during product promotion.
+Exempt: ordinary cleavage exposure without deliberate sexualized action; normal bikini in beach context.
+
+Category 2: 恶心恐怖低质问题 / disgusting_horror
+Allowed materials: slice_image, ASR. Product image forbidden.
+Visual hit requires both: indoor scene with disgusting/horror content over 50% of frame or many insects clearly spread through environment, and no active cleaning. ASR hit requires mentioning such disgusting/horror scene and no cleaning. Any active cleaning behavior or cleaning product use exempts.
+Threshold: any one image or ASR hit.
+
+Category 3: 商品无关低质问题 / product_unrelated
+Allowed materials: slice_image, ASR, OCR, product_image. Product image allowed.
+Use bound product image category/function/use-case as the only product-reference standard.
+Hit if live core content is unrelated to bound product and lacks valid sustained product promotion.
+Threshold: at least 3 ASR snippets fully unrelated to bound products; or at least 3 frame groups show no clear bound product and matching ASR is unrelated; or unrelated image+ASR count totals at least 6.
+No exemption once threshold is met.
+
+Category 4: 无互动低质问题 / no_interaction
+Allowed materials: slice_image, ASR, OCR. Product image forbidden.
+Single snippet hit requires both no product promotion and no host-audience interaction.
+Threshold: at least 4 of 5 ASR snippets hit.
+
+Category 5: 无实物商品展示低质问题 / no_physical_product_display
+Allowed materials: slice_image, ASR, OCR, product_image. Product image allowed.
+Hit when live does not show bound physical product as real video: product only as sticker/cutout/photo/screenshot/static image; no bound product shown; or only unrecognizable product part shown. ASR/OCR are supporting evidence only when relevant.
+Threshold: at least 4 of 5 frame groups hit.
+
+Category 6: 商品描述不详细低质问题 / product_description_not_detailed
+Allowed materials: slice_image, ASR, OCR, product_image. Product image allowed.
+Prerequisite: clear product promotion intent and sustained product display/explanation/demonstration.
+Hit if promotion gives no effective product information such as category/spec/function/use/price/discount, or product talk is mostly off-topic with very low effective information, or product is shown/demonstrated with no useful explanation.
+Exempt: merely wearing/showing product with no promotion/explanation. If no promotion intent and content is unrelated, use category 3 instead.
+Threshold: cumulative at least 4 image/ASR evidence units.
+
+Category 7: 静态帧遮挡低质问题 / static_frame_occlusion
+Allowed materials: slice_image. Product image forbidden.
+Hit when any frame has an occlusion/interruption layer covering at least 80% of live screen and seriously blocking the underlying live content.
+Both 80%+ coverage and serious viewing interference are required.
+
+Category 8: 非母语违规低质问题 / non_native_language_violation
+Allowed materials: ASR, OCR. Product image forbidden.
+Hit if any ASR contains Chinese, Chinglish, incomprehensible English, or highly abnormal English; or any OCR contains Chinese characters.
+Exempt: coworker daily Chinese conversation unrelated to product promotion; minor accent that is easy to understand.
+
+Category 9: AIGC真实性低质问题 / aigc_authenticity
+Allowed materials: slice_image, ASR, OCR, product_image. Product image allowed.
+Hit when AIGC-generated content is used for product promotion and misleads authenticity or differs from bound physical product: fake AI voice/interview, fake before/after effect, AI product size/style mismatch, digital human explaining product while real bound product never appears, or visible AI traces misleading product authenticity.
+Threshold: any one image/ASR/OCR hit.
+
+Category 10: AIGC商品展示低质问题 / aigc_product_display
+Allowed materials: slice_image, ASR, OCR, product_image. Product image allowed.
+Hit when generated/rendered product or generated use scene appears and size/style/effect is exaggerated or mismatched versus bound real product.
+Threshold: any one image/ASR/OCR hit.
+
+Category 11: 录播回放低质问题 / replay_recorded_content
+Allowed materials: slice_image, ASR. Product image forbidden.
+Visual hit: taskbar, mouse cursor unless used for product pointing, black/green screen, abnormal image jumping, or nested screen with replay-like feature. ASR hit only when directly mentioning replay/loop playback.
+Threshold: any one image or ASR hit.
+
+Category 12: 功能效果虚假宣传低质问题 / false_function_effect_claim
+Allowed materials: slice_image, ASR, product_image. Product image allowed.
+Hit when visual or speech exaggerates product function/effect beyond reasonable reliable product capability and misleads consumers, including dramatic before/after, unverifiable instant effects, unsupported claims such as fast weight loss/instant whitening/overnight body change, or presentation that makes exaggerated effects look reliable.
+Exempt: ordinary improvement, price, or discount information without exaggerated effect.
+Threshold: any one image or ASR hit.
+
+Category 13: 危险行为低质问题 / dangerous_behavior
+Allowed materials: slice_image, ASR. Product image forbidden.
+Hit for goods producing heavy smoke/fire illusion or violent/life-threatening behavior/demonstration.
+Exempt: normal product demonstration, explanation, or safe behavior.
+Threshold: cumulative at least 2 image/ASR evidence units.
+
+Category 14: 站外引流交易低质问题 / off_platform_transaction
+Allowed materials: slice_image, ASR, OCR. Product image forbidden.
+Hit only when same scene has both: payment/off-platform account/site/app info such as shopping website, payment app, phone number, QR code, external domain, Venmo, PayPal, WhatsApp; and explicit transaction guidance such as verbal buying guidance, visible text buying guidance, or comment buying guidance.
+Exempt: platform-internal order guidance; social account jump without purchase intent; bio link only with no live/comment transaction guidance; only one core condition; vague click-link mention without payment info and transaction guidance.
+
+Category 15: 违法违规商品低质问题 / illegal_prohibited_goods
+Allowed materials: slice_image, ASR, product_image. Product image allowed.
+Hit when sold product is legally prohibited, counterfeit, imitation, inferior, differs from bound product, or has clear missing qualification evidence.
+Exempt: normal legal goods, regular brand goods, ordinary product demonstration.
+Threshold: cumulative at least 2 image/ASR evidence units.
+
+Category 16: 政治敏感低质问题 / politically_sensitive
+Allowed materials: slice_image, ASR, product_image. Product image allowed.
+Hit for political controversy, sensitive political symbols/movements, political hate symbols, racial discrimination, or polarized political narrative.
+Exempt: general non-political content unrelated to political controversy or symbols.
+Threshold: cumulative at least 2 image/ASR evidence units.
+
+Category 17: 争议话题低质问题 / controversial_topic
+Allowed materials: slice_image, ASR, product_image. Product image allowed.
+Hit for sensitive content/dialogue/symbol/theme related to religion, racial discrimination, moral boundary, LGBT, or similarly high-conflict socio-cultural themes. Do not extend beyond this specified scope.
+Exempt: general non-sensitive content outside the specified topic scope.
+Threshold: cumulative at least 2 image/ASR evidence units.
+
+Category 18: 负面引导低质问题 / negative_guidance
+Allowed materials: slice_image, ASR. Product image forbidden.
+Hit for complaint/rant, wealth flaunting, comparison, or content likely to trigger jealousy, resentment, irritability, dissatisfaction, or other negative emotions.
+Exempt: neutral or positive content unrelated to negative emotion triggering.
+Threshold: cumulative at least 2 image/ASR evidence units.
+
+Category 19: 隐私敏感商品低质问题 / privacy_sensitive_product
+Allowed materials: slice_image, ASR, product_image. Product image allowed.
+Hit for intimate, gender-specific, privacy-related non-pornographic product tied to bound product, such as female underwear, sanitary products, nipple covers, private body-use products.
+Exempt: normal shaver display in non-private context. If used/displayed for private body parts, classify as category 1. Sexual exposure/implication belongs to category 1, not category 19.
+Threshold: cumulative at least 2 image/ASR evidence units.
+
+Juror output requirement
+Return raw JSON only. Include exactly 19 category_results. Every category result must include category_id, category_name, decision, confidence, evidence, threshold_check, materials_used, product_image_used, product_image_used_allowed, needs_judge_attention. A hit must have non-empty evidence. A no_hit may have empty evidence but must include threshold_check.
+
+Chief Judge output requirement
+Final human report must first list hit categories under 识别到的低质问题：, then list every non-hit category under 无低质问题：. Append machine-readable JSON after FINAL_JSON:. The final output must cover all 19 categories.
