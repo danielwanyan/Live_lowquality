@@ -116,7 +116,8 @@ Threshold: cumulative at least 2 image/ASR evidence units.
 Category 18: 负面引导低质问题 / negative_guidance
 Allowed materials: slice_image, ASR. Product image forbidden.
 Hit for complaint/rant, wealth flaunting, comparison, or content likely to trigger jealousy, resentment, irritability, dissatisfaction, or other negative emotions.
-Exempt: neutral or positive content unrelated to negative emotion triggering.
+Card/lottery live false-positive guard: in card opening, TCG, trading-card, lottery/spin, or similar live rooms, casual slang, short emotional reactions, disappointment about pull results, comments on card art/design, or hype words such as disgusting/crazy/insane used as slang are not a hit by themselves. Hit only when the content persistently guides viewers into jealousy, resentment, anxiety, dissatisfaction, hostile comparison, wealth flaunting, or purchase-pressure emotion.
+Exempt: neutral or positive content unrelated to negative emotion triggering; ordinary card-pull disappointment; casual streamer banter; slang or hype language without sustained negative guidance.
 Threshold: cumulative at least 2 image/ASR evidence units.
 
 Category 19: 隐私敏感商品低质问题 / privacy_sensitive_product

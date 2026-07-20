@@ -223,10 +223,10 @@
       "english_key": "negative_guidance",
       "allowed_materials": ["slice_image", "asr"],
       "product_image_allowed": false,
-      "trigger_threshold": "Cumulative at least 2 image/ASR evidence units show complaining, negative emotional guidance, wealth flaunting, comparison, jealousy, resentment, irritability, or dissatisfaction triggers.",
-      "hit_definition_zh": "直播中出现抱怨吐槽、炫富攀比、易引发观众负面情绪的内容。",
-      "judge_focus_en": "Neutral or positive content unrelated to negative emotion triggering is exempt.",
-      "exemptions": ["General neutral or positive content."]
+      "trigger_threshold": "Cumulative at least 2 image/ASR evidence units show persistent negative emotional guidance, wealth flaunting, hostile comparison, jealousy, resentment, irritability, dissatisfaction triggers, anxiety induction, or purchase-pressure emotion.",
+      "hit_definition_zh": "直播中出现持续抱怨吐槽、炫富攀比、易引发观众负面情绪或购买焦虑的内容。",
+      "judge_focus_en": "Card/lottery live false-positive guard: in card opening, TCG, trading-card, lottery/spin, or similar live rooms, casual slang, short emotional reactions, disappointment about pull results, comments on card art/design, or hype words such as disgusting/crazy/insane used as slang are not a hit by themselves. Require persistent guidance into jealousy, resentment, anxiety, dissatisfaction, hostile comparison, wealth flaunting, or purchase-pressure emotion.",
+      "exemptions": ["General neutral or positive content.", "Ordinary card-pull disappointment.", "Casual streamer banter.", "Slang or hype language without sustained negative guidance.", "Comments on card art/design or pull luck that do not induce viewer anxiety, resentment, jealousy, or purchase pressure."]
     },
     {
       "category_id": 19,

@@ -87,8 +87,9 @@ Hit: cumulative at least 2 image/ASR evidence units showing sensitive religion, 
 
 18 负面引导低质问题
 Allowed: slice_image, ASR. Product image forbidden.
-Hit: cumulative at least 2 image/ASR evidence units showing complaint/rant, wealth flaunting, comparison, jealousy, resentment, irritability, dissatisfaction, or negative emotion triggering.
-Exempt: neutral/positive content; ordinary product comparison without negative emotion triggering.
+Hit: cumulative at least 2 image/ASR evidence units showing persistent negative emotional guidance, wealth flaunting, hostile comparison, jealousy, resentment, irritability, dissatisfaction triggers, anxiety induction, or purchase-pressure emotion.
+Card/lottery guard: in card opening, TCG, trading-card, lottery/spin, or similar live rooms, casual slang, short emotional reactions, disappointment about pull results, comments on card art/design, or hype words such as disgusting/crazy/insane used as slang are not a hit by themselves.
+Exempt: neutral/positive content; ordinary product comparison without negative emotion triggering; ordinary card-pull disappointment; casual streamer banter; slang or hype language without sustained negative guidance; comments on card art/design or pull luck that do not induce viewer anxiety, resentment, jealousy, or purchase pressure.
 
 19 隐私敏感商品低质问题
 Allowed: slice_image, ASR, product_image.
