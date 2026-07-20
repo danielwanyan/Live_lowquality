@@ -113,10 +113,10 @@
       "english_key": "non_native_language_violation",
       "allowed_materials": ["asr", "ocr"],
       "product_image_allowed": false,
-      "trigger_threshold": "Any Chinese in ASR or OCR, Chinglish, incomprehensible English, or highly abnormal English in the 5 ASR/OCR snippets.",
-      "hit_definition_zh": "直播语音或画面文本中出现不符合要求的中文、中式英语、无法理解的英文内容。",
-      "judge_focus_en": "Minor understandable accent is not a hit. Coworker casual Chinese unrelated to product promotion is exempt.",
-      "exemptions": ["Coworker daily Chinese conversation unrelated to product promotion.", "Minor accent that is easy to understand."]
+      "trigger_threshold": "Hit only when ASR/OCR contains Chinese/CJK characters used in product promotion, Chinglish, incomprehensible English, or severely broken English that prevents normal product understanding.",
+      "hit_definition_zh": "直播语音或画面文本中出现不符合要求的中文、中式英语、无法理解或严重破碎到影响商品理解的英文内容。",
+      "judge_focus_en": "EU market false-positive guard: normal English and local EU-language code-switching is not a hit. Local-language words such as German 'Englisch' are not misspelled English. Isolated OCR noise, stylized labels, usernames, product names, or minor spelling mistakes are not enough unless the overall promotion text becomes incomprehensible.",
+      "exemptions": ["Normal EU local-language and English code-switching.", "Local-language words inside English-dominant promotion.", "Coworker daily Chinese conversation unrelated to product promotion.", "Minor accent that is easy to understand.", "Isolated OCR or spelling noise that does not prevent product understanding."]
     },
     {
       "category_id": 9,
@@ -146,10 +146,10 @@
       "english_key": "replay_recorded_content",
       "allowed_materials": ["slice_image", "asr"],
       "product_image_allowed": false,
-      "trigger_threshold": "Any 1 image shows taskbar/cursor unless used for product pointing, black/green screen, abnormal jump, or nested replay-like screen; or ASR directly mentions replay/loop playback.",
+      "trigger_threshold": "Any 1 image shows taskbar/cursor unless used for product pointing, black/green screen, abnormal jump, or a nested screen with clear replay/loop/pre-recorded feature; or ASR directly mentions replay/loop playback.",
       "hit_definition_zh": "直播间存在预录内容循环播放的相关特征。",
-      "judge_focus_en": "Only listed replay indicators count. A product-pointing cursor is exempt.",
-      "exemptions": ["Cursor used to point to or demonstrate product is exempt."]
+      "judge_focus_en": "Only clear replay indicators count. For card opening, TCG, trading-card, lottery/spin, or similar live rooms, a browser/desktop/OBS-style interface, wheel/spin page, card-list page, or small host camera window is not replay by itself. A host face-cam window used to prove real-time opening is exempt when the host is visibly live or ASR is aligned with mouth movement.",
+      "exemptions": ["Cursor used to point to or demonstrate product is exempt.", "Browser, desktop, OBS-style, wheel/spin, or card-list interfaces in card-opening live rooms are exempt unless clear replay indicators are present.", "Small host face-cam windows are exempt when they show real-time hosting or mouth movement aligned with ASR.", "Do not classify as replay based only on a host camera overlay or card-opening operation interface."]
     },
     {
       "category_id": 12,

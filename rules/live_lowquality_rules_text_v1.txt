@@ -58,8 +58,9 @@ Both 80%+ coverage and serious viewing interference are required.
 
 Category 8: 非母语违规低质问题 / non_native_language_violation
 Allowed materials: ASR, OCR. Product image forbidden.
-Hit if any ASR contains Chinese, Chinglish, incomprehensible English, or highly abnormal English; or any OCR contains Chinese characters.
-Exempt: coworker daily Chinese conversation unrelated to product promotion; minor accent that is easy to understand.
+Hit only when ASR or OCR contains Chinese/CJK characters used in product promotion, Chinglish, incomprehensible English, or severely broken English that prevents normal product understanding.
+EU market false-positive guard: normal mixing between English and a local EU language such as German, French, Spanish, Italian, Dutch, Polish, or other EU languages is not a hit. Words from a local language, such as German "Englisch", are not misspelled English. Isolated OCR noise, stylized labels, usernames, product names, or minor spelling mistakes are not enough unless the overall promotion text becomes incomprehensible.
+Exempt: normal EU local-language and English code-switching; local-language words inside English-dominant promotion; coworker daily Chinese conversation unrelated to product promotion; minor accent that is easy to understand; isolated OCR or spelling noise.
 
 Category 9: AIGC真实性低质问题 / aigc_authenticity
 Allowed materials: slice_image, ASR, OCR, product_image. Product image allowed.
@@ -73,7 +74,8 @@ Threshold: any one image/ASR/OCR hit.
 
 Category 11: 录播回放低质问题 / replay_recorded_content
 Allowed materials: slice_image, ASR. Product image forbidden.
-Visual hit: taskbar, mouse cursor unless used for product pointing, black/green screen, abnormal image jumping, or nested screen with replay-like feature. ASR hit only when directly mentioning replay/loop playback.
+Visual hit: taskbar, mouse cursor unless used for product pointing, black/green screen, abnormal image jumping, or nested screen with clear replay/loop/pre-recorded feature. ASR hit only when directly mentioning replay/loop playback.
+Card/live-break false-positive guard: for card opening, TCG, trading-card, lottery/spin, or similar live rooms, a browser/desktop/OBS-style interface, wheel/spin page, card-list page, or small host camera window is not replay by itself. A host face-cam window shown to prove real-time opening is exempt when the host is visibly live or ASR is aligned with mouth movement. Hit only if there are additional replay indicators such as loop/replay labels, playback controls, video timeline, repeated sequence, abnormal jump, black/green screen, or ASR directly saying replay/loop.
 Threshold: any one image or ASR hit.
 
 Category 12: 功能效果虚假宣传低质问题 / false_function_effect_claim
